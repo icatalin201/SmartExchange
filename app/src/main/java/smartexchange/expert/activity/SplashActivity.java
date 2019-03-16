@@ -16,9 +16,10 @@ import java.util.concurrent.ExecutionException;
 
 import smartexchange.expert.R;
 import smartexchange.expert.util.Constants;
+import smartexchange.expert.util.ServerHelper;
 import smartexchange.expert.util.Utils;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity implements ServerHelper.OnRequestCompleted {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,53 +32,26 @@ public class SplashActivity extends AppCompatActivity {
             Utils.putInSharedPreferences(Constants.NOTIFICATION, this, "notify", "1");
         }
         updateRates();
+    }
+
+    private void updateRates() {
+        ServerHelper serverHelper = new ServerHelper(this ,getApplicationContext());
+        serverHelper.updateRates(Constants.BNR_URL);
+    }
+
+    @Override
+    public void onBackPressed() { }
+
+    @Override
+    public void onSuccess() {
         new Handler().postDelayed(() -> {
             startActivity(new Intent(SplashActivity.this, MainActivity.class));
             finish();
         }, Constants.SPLASH_SCREEN_DURATION);
     }
 
-    private void updateRates() {
-        try {
-            String result = new CallBNR().execute(Constants.BNR_URL).get();
-            Utils.parseStringXml(getApplicationContext(), result);
-        } catch (InterruptedException | ExecutionException e) {
-            e.printStackTrace();
-        }
-    }
-
     @Override
-    public void onBackPressed() { }
+    public void onFailure(String message) {
 
-    public static class CallBNR extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... strings) {
-            StringBuilder xmlString = new StringBuilder();
-            try {
-                InputStream inputStream = null;
-                URL url = new URL(strings[0]);
-                HttpURLConnection cc = (HttpURLConnection) url.openConnection();
-                cc.setReadTimeout(5000);
-                cc.setConnectTimeout(5000);
-                cc.setRequestMethod("GET");
-                cc.setDoInput(true);
-                int response = cc.getResponseCode();
-                if (response == HttpURLConnection.HTTP_OK) {
-                    inputStream = cc.getInputStream();
-                }
-                if (inputStream != null) {
-                    InputStreamReader isr = new InputStreamReader(inputStream);
-                    BufferedReader reader = new BufferedReader(isr);
-                    String line;
-                    while ((line = reader.readLine()) != null) {
-                        xmlString.append(line);
-                    }
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return xmlString.toString();
-        }
     }
 }

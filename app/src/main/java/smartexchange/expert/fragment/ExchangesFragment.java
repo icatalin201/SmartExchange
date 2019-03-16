@@ -33,9 +33,11 @@ import smartexchange.expert.model.Region;
 import smartexchange.expert.sql.SqlService;
 import smartexchange.expert.sql.SqlStructure;
 import smartexchange.expert.util.Constants;
+import smartexchange.expert.util.ServerHelper;
 import smartexchange.expert.util.Utils;
 
-public class ExchangesFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+public class ExchangesFragment extends Fragment
+        implements SwipeRefreshLayout.OnRefreshListener, ServerHelper.OnRequestCompleted {
 
     private ExchangeAdapter exchangeAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -127,24 +129,27 @@ public class ExchangesFragment extends Fragment implements SwipeRefreshLayout.On
     }
 
     private void refresh() {
-        try {
-            String result = new SplashActivity.CallBNR().execute(Constants.BNR_URL).get();
-            Utils.parseStringXml(getActivity(), result);
-            exchangeAdapter.removeAll();
-            List<Region> regionList = SqlService.getExchangeList(getActivity(),
-                    SqlStructure.SqlData.calculator_favorite + " = ?", new String[]{"1"});
-            exchangeAdapter.addAllItems(regionList);
-            swipeRefreshLayout.setRefreshing(false);
-        } catch (InterruptedException | ExecutionException e) {
-            Toast.makeText(getActivity(),
-                    String.format("A aparut o eroare! Info: %s", e.getMessage()),
-                    Toast.LENGTH_SHORT).show();
-            e.printStackTrace();
-        }
+        ServerHelper serverHelper = new ServerHelper(this, getActivity());
+        serverHelper.updateRates(Constants.BNR_URL);
     }
 
     @Override
     public void onRefresh() {
         refresh();
+    }
+
+    @Override
+    public void onSuccess() {
+        exchangeAdapter.removeAll();
+        List<Region> regionList = SqlService.getExchangeList(getActivity(),
+                SqlStructure.SqlData.calculator_favorite + " = ?", new String[]{"1"});
+        exchangeAdapter.addAllItems(regionList);
+        swipeRefreshLayout.setRefreshing(false);
+    }
+
+    @Override
+    public void onFailure(String message) {
+        Toast.makeText(getActivity(),
+                String.format("A aparut o eroare! Info: %s", message), Toast.LENGTH_LONG).show();
     }
 }

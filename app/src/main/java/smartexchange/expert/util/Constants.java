@@ -17,7 +17,7 @@ public class Constants {
     public static final String CALCULATOR = "calculator";
     public static final String CONVERTER = "convertor";
     public static final String INTENT_TYPE = "intent_type";
-    public static final String FIRST_TIME = "first_time_open";
+    public static final String FIRST_TIME = "fto";
     public static final String LANGUAGE = "language";
     public static final String AUTO_UPDATE = "auto_update";
     public static final String NOTIFICATION = "notification";

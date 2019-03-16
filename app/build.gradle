@@ -7,8 +7,8 @@ android {
         applicationId "smartexchange.expert"
         minSdkVersion 23
         targetSdkVersion 28
-        versionCode 20
-        versionName "1.9.5"
+        versionCode 21
+        versionName "1.9.6"
     }
     buildTypes {
         release {

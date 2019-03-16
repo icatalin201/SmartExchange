@@ -75,6 +75,26 @@ public class SqlService {
         return banknoteList;
     }
 
+    public static Exchange getExchange(Context context, String currency) {
+        SQLiteDatabase sqLiteDatabase = new SqlHelper(context).getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.query(SqlStructure.SqlData.CURRENCY,
+                null, SqlStructure.SqlData.exchange_name + " = ?",
+                new String[]{currency}, null, null, null);
+        Exchange exchange = new Exchange();
+        if (cursor.moveToFirst()) {
+            int id = cursor.getInt(cursor.getColumnIndex(SqlStructure.SqlData._ID));
+            String name = cursor.getString(cursor.getColumnIndex(SqlStructure.SqlData.exchange_name));
+            float value = cursor.getFloat(cursor.getColumnIndex(SqlStructure.SqlData.exchange_value));
+            int multiplier = cursor.getInt(cursor.getColumnIndex(SqlStructure.SqlData.exchange_multiplier));
+            String calculatorFavorite = cursor.getString(cursor.getColumnIndex(SqlStructure.SqlData.calculator_favorite));
+            String converterFavorite = cursor.getString(cursor.getColumnIndex(SqlStructure.SqlData.convertor_favorite));
+            exchange = new Exchange(id, name, value, multiplier, calculatorFavorite, converterFavorite);
+        }
+        cursor.close();
+        sqLiteDatabase.close();
+        return exchange;
+    }
+
     public static void insertExchange(Context context, Exchange exchange) {
         SqlHelper sqlHelper = new SqlHelper(context);
         SQLiteDatabase sqLiteDatabase = sqlHelper.getWritableDatabase();
@@ -99,8 +119,8 @@ public class SqlService {
             contentValues.put(SqlStructure.SqlData.convertor_favorite, exchange.getConvertorFavorite());
             contentValues.put(SqlStructure.SqlData.calculator_favorite, exchange.getCalculatorFavorite());
             sqLiteDatabase.update(SqlStructure.SqlData.CURRENCY, contentValues,
-                    SqlStructure.SqlData._ID + " = ?",
-                    new String[]{String.valueOf(exchange.getId())});
+                    SqlStructure.SqlData.exchange_name + " = ?",
+                    new String[]{String.valueOf(exchange.getName())});
         }
         sqLiteDatabase.close();
     }
