@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group
+        android:id="@+id/group1"
+        android:checkableBehavior="single">
+        <item
+            android:icon="@drawable/ic_baseline_compare_arrows_24px"
+            android:id="@+id/calculator"
+            android:title="@string/calculator"
+            android:background="?selectableItemBackground">
+        </item>
+
+        <item
+            android:icon="@drawable/ic_baseline_attach_money_24px"
+            android:id="@+id/convertor"
+            android:title="@string/convertor"
+            android:background="?selectableItemBackground">
+        </item>
+
+    </group>
+
+    <group
+        android:id="@+id/group2">
+
+        <item
+            android:icon="@drawable/ic_baseline_settings_20px"
+            android:id="@+id/settings"
+            android:title="@string/settings"
+            android:background="?selectableItemBackground">
+        </item>
+
+        <item
+            android:icon="@drawable/ic_baseline_info_24px"
+            android:id="@+id/about"
+            android:title="@string/about"
+            android:background="?selectableItemBackground">
+        </item>
+    </group>
+
+    <group android:id="@+id/group3">
+        <item
+            android:icon="@drawable/ic_baseline_star_rate_18px"
+            android:id="@+id/rating"
+            android:title="@string/rating"
+            android:background="?selectableItemBackground">
+        </item>
+
+        <item
+            android:icon="@drawable/ic_baseline_share_24px"
+            android:id="@+id/share"
+            android:title="@string/share"
+            android:background="?selectableItemBackground">
+        </item>
+
+    </group>
+
+</menu>

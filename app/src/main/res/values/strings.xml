@@ -1,0 +1,83 @@
+<resources>
+    <string name="app_name" translatable="false">SmartExchange</string>
+    <string name="app_version" translatable="false">1.9.5</string>
+    <string name="suggested">Te-ar putea interesa si</string>
+    <string name="space" translatable="false">Space Infinity</string>
+    <string name="movies" translatable="false">Movieteca</string>
+    <string name="app_description">SmartExchange foloseste cursul valutar oferit de BNR pentru calcule si conversie. De retinut ca in weekend cursul nu se actualizeaza, ratele de schimb ramanand cu valorile din ziua ultimei actualizari.</string>
+    <string name="open">Deschide</string>
+    <string name="rate_update">Curs actualizat la: %1$s</string>
+    <string name="close">Inchide</string>
+    <string name="backspace">Sterge</string>
+    <string name="flag">Steag</string>
+    <string name="favorites">Favorite</string>
+    <string name="calculator">Calculator Valutar</string>
+    <string name="convertor">Convertor Valutar</string>
+    <string name="banknotes">Bancnote</string>
+    <string name="settings">Setari</string>
+    <string name="about">Despre</string>
+    <string name="rating">Evalueaza in Magazin Play</string>
+    <string name="share">Distribuie</string>
+    <string name="select_region">Selecteaza regiunea</string>
+    <string name="add_currency">Salveaza</string>
+    <string name="appearance">Afisare</string>
+    <string name="functionality">Functionalitate</string>
+    <string name="autoupdate">Actualizare automata curs valutar</string>
+    <string name="language">Limba</string>
+    <string name="theme">Tema</string>
+    <string name="dateformat">Format data</string>
+    <string name="ro">Romana</string>
+    <string name="en">Engleza</string>
+    <string name="fr">Franceza</string>
+    <string name="choose_language">Alege limba</string>
+    <string name="seven" translatable="false">7</string>
+    <string name="eight" translatable="false">8</string>
+    <string name="nine" translatable="false">9</string>
+    <string name="six" translatable="false">6</string>
+    <string name="five" translatable="false">5</string>
+    <string name="four" translatable="false">4</string>
+    <string name="three" translatable="false">3</string>
+    <string name="two" translatable="false">2</string>
+    <string name="one" translatable="false">1</string>
+    <string name="point" translatable="false">.</string>
+    <string name="mux" translatable="false">*</string>
+    <string name="dif" translatable="false">-</string>
+    <string name="div" translatable="false">/</string>
+    <string name="sum" translatable="false">+</string>
+    <string name="zero" translatable="false">0</string>
+    <string name="equal" translatable="false">=</string>
+    <string name="region_ro">Romania</string>
+    <string name="region_ue">Uniunea Europeana</string>
+    <string name="region_sua">Statele Unite ale Americii</string>
+    <string name="region_eau">Emiratele Arabe Unite</string>
+    <string name="region_au">Australia</string>
+    <string name="region_bul">Bulgaria</string>
+    <string name="region_bra">Brazilia</string>
+    <string name="region_can">Canada</string>
+    <string name="region_swi">Elvetia</string>
+    <string name="region_chi">China</string>
+    <string name="region_ceh">Cehia</string>
+    <string name="region_den">Danemarca</string>
+    <string name="region_eg">Egipt</string>
+    <string name="region_uk">Regatul Unit al Marii Britanii</string>
+    <string name="region_cro">Croatia</string>
+    <string name="region_un">Ungaria</string>
+    <string name="region_in">India</string>
+    <string name="region_ja">Japonia</string>
+    <string name="region_cor">Coreea de Sud</string>
+    <string name="region_mold">Republica Moldova</string>
+    <string name="region_mex">Mexic</string>
+    <string name="region_nor">Norvegia</string>
+    <string name="region_nzl">Noua Zeelanda</string>
+    <string name="region_pol">Polonia</string>
+    <string name="region_ser">Serbia</string>
+    <string name="region_ru">Rusia</string>
+    <string name="region_sw">Suedia</string>
+    <string name="region_th">Thailanda</string>
+    <string name="region_tu">Turcia</string>
+    <string name="region_uc">Ucraina</string>
+    <string name="region_af">Africa de Sud</string>
+    <string name="notification_title">Curs valutar actualizat</string>
+    <string name="notification_text">Ratele de schimb au fost actualizate. Vezi mai multe in aplicatie</string>
+    <string name="notification">Primire notificari</string>
+</resources>
