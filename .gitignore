@@ -8,3 +8,5 @@ build/
 gradle/
 
 app/release/
+
+*.png
